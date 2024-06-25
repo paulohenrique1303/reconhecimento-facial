@@ -1,6 +1,10 @@
 import cv2
+import os
+import numpy as np
 
-def cadastro_face(nome: str) -> None:
+
+
+def salvar_fotos(nome: str) -> str:
 
     cap = cv2.VideoCapture(0)
 
@@ -17,7 +21,7 @@ def cadastro_face(nome: str) -> None:
         if not ret:
             print("Erro ao capturar frame")
             break
- 
+    
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -31,7 +35,12 @@ def cadastro_face(nome: str) -> None:
 
         cv2.imshow('Face Capture', frame)
         if cv2.waitKey(1) & 0xFF == ord('q') or count >= 50:
-            break
-
+                break
+    
+        return 'C:\\Users\\paulo\\Desktop\\dimmy\\faces'
+        
     cap.release()
     cv2.destroyAllWindows()
+
+
+
